@@ -21,12 +21,12 @@ Each module is framed as a step in an architectural journey through a different 
 
 | Module | Theme      | Main Focus                                                                |
 |:------:|:-----------|:---------------------------------------------------------------------------|
-| **05** | Code Nexus | Abstract Base Classes (`ABC`), polymorphism, data streams                  |
-| **06** | The Codex  | Import mechanics, package architecture (`__init__.py`), circular imports  |
-| **07** | DataDeck   | Design patterns — Abstract Factory, Capabilities/Mixins, Strategy         |
-| **08** | The Matrix | Virtual environments (`venv`), package managers (`pip` / Poetry), `.env`  |
-| **09** | Cosmic Data| Data validation & schemas with **Pydantic v2** (`BaseModel`, `@model_validator`) |
-| **10** | FuncMage   | Functional programming — lambdas, higher-order functions, closures, `functools`, decorators |
+| **05** | Code Nexus ✅| Abstract Base Classes (`ABC`), polymorphism, data streams                  |
+| **06** | The Codex  ✅| Import mechanics, package architecture (`__init__.py`), circular imports  |
+| **07** | DataDeck   ✅| Design patterns — Abstract Factory, Capabilities/Mixins, Strategy         |
+| **08** | The Matrix ✅| Virtual environments (`venv`), package managers (`pip` / Poetry), `.env`  |
+| **09** | Cosmic Data ✅| Data validation & schemas with **Pydantic v2** (`BaseModel`, `@model_validator`) |
+| **10** | FuncMage ❌ | Functional programming — lambdas, higher-order functions, closures, `functools`, decorators |
 
 ---
 
