@@ -1,5 +1,6 @@
 from datetime import datetime
 from typing import Optional
+
 from pydantic import BaseModel, Field, ValidationError
 
 
@@ -25,7 +26,7 @@ def main() -> None:
             crew_size=6,
             power_level=85.5,
             oxygen_level=92.3,
-            last_maintenance="2026-03-15T10:00:00",
+            last_maintenance=datetime.fromisoformat("2026-03-15T10:00:00"),
             is_operational=True,
             notes="Tudo operacional na estação orbital.",
         )
@@ -35,8 +36,10 @@ def main() -> None:
         print(f"Crew: {valid_station.crew_size} people")
         print(f"Power: {valid_station.power_level}%")
         print(f"Oxygen: {valid_station.oxygen_level}%")
-        print(f"Status: {'Operational'
-                         if valid_station.is_operational else 'Inactive'}")
+
+        status = "Operational" if valid_station.is_operational else "Inactive"
+        print(f"Status: {status}")
+
     except ValidationError as err:
         print(f"Unexpected error: {err}")
 

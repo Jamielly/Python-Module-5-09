@@ -1,6 +1,7 @@
 from datetime import datetime
 from enum import Enum
 from typing import List
+
 from pydantic import BaseModel, Field, ValidationError, model_validator
 
 
@@ -44,10 +45,13 @@ class SpaceMission(BaseModel):
             raise ValueError("All crew members must be active")
 
         has_leadership = any(
-            member.rank in (Rank.COMMANDER, Rank.CAPTAIN) for member in self.crew
+            member.rank in (Rank.COMMANDER, Rank.CAPTAIN)
+            for member in self.crew
         )
         if not has_leadership:
-            raise ValueError("Mission must have at least one Commander or Captain")
+            raise ValueError(
+                "Mission must have at least one Commander or Captain"
+                )
 
         if self.duration_days > 365:
             experienced_count = sum(
@@ -55,7 +59,8 @@ class SpaceMission(BaseModel):
             )
             if (experienced_count / len(self.crew)) < 0.5:
                 raise ValueError(
-                    "Long missions (> 365 days) need 50% experienced crew (5+ years)"
+                    "Long missions (> 365 days) need 50% experienced "
+                    " crew (5+ years)"
                 )
 
         return self
@@ -111,7 +116,10 @@ def main() -> None:
         print(f"Crew size: {len(mission.crew)}")
         print("Crew members:")
         for member in mission.crew:
-            print(f"- {member.name} ({member.rank.value}) {member.specialization}")
+            print(
+                f"- {member.name} ({member.rank.value}) "
+                f" {member.specialization}"
+              )
     except ValidationError as err:
         print(f"Unexpected error: {err}")
 
@@ -127,7 +135,7 @@ def main() -> None:
             budget_millions=150.0,
         )
     except ValidationError as err:
-        error_msg = err.errors()[0]["msg"]
+        error_msg = str(err.errors()[0]["msg"])
         clean_msg = error_msg.replace("Value error, ", "")
         print(clean_msg)
 
